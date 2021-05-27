@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<br>
+    <h1 class = "text-center"> Supplements Inventory </h1>
+<br>
+<div class= 'button-group'>
+
+     <a href="{% url 'display_amino'  %}" class="btn btn-primary btn-md" role="button">Amino Acids</a>
+     <a href="{% url 'display_bcaa'  %}" class="btn btn-primary btn-md" role="button">BCAA</a>
+     <a href="{% url 'display_beta'  %}" class="btn btn-primary btn-md" role="button">Beta-Alanine</a>
+     <a href="{% url 'display_caffeine'  %}" class="btn btn-primary btn-md" role="button">Caffeine</a>
+     <a href="{% url 'display_lc'  %}" class="btn btn-primary btn-md" role="button">L-Carnitine</a>
+     <a href="{% url 'display_newone'  %}" class="btn btn-primary btn-md" role="button">New Items</a>
+     <a href="{% url 'display_post'  %}" class="btn btn-primary btn-md" role="button">Post Workouts</a>
+     <a href="{% url 'display_pre'  %}" class="btn btn-primary btn-md" role="button">Pre Workouts</a>
+     <a href="{% url 'display_protein'  %}" class="btn btn-primary btn-md" role="button">Protein</a>
+     <a href="{% url 'display_recovery'  %}" class="btn btn-primary btn-md" role="button">Recovery</a>
+     <br>
+     <br>
+     <a href="{% url 'display_test'  %}" class="btn btn-primary btn-md" role="button">Testosterone</a>
+
+</div>
+    <br>
+
+
+<h4 class = 'text-center'>Currently Viewing : {{ header }}</h4>
+    </div>
+
+<table class= 'table table-hover'>
+<thead>
+<tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Number of Flavors </th>
+    <th>Product Rating</th>
+    <th>Price</th>
+    <th>Price Per Serving</th>
+    <th>Category</th>
+    <th>Description</th>
+    <th>Top Flavor</th>
+    <th>URl</th>
+</tr>
+</thead>
+
+<tbody>
+
+    {% for item in items %}
+    <tr>
+    <td>{{ item.pk }}</td>
+    <td>{{ item.Name }}</td>
+    <td>{{ item.Flavors }}</td>
+    <td>{{ item.Rating }}</td>
+    <td>{{ item.Price }}</td>
+    <td>{{ item.Per }}</td>
+    <td>{{ item.Category }}</td>
+    <td>{{ item.Description }}</td>
+    <td>{{ item.TopFlavor }}</td>
+    <td>{{ item.URL }}</td>
+
+
+    </tr>
+
+
+    {% endfor %}
+
+</tbody>
+</table>
+<br>
+
+    <h1 class = "text-center"> Calendar </h1>
+<br>
+<br>
+ <div id="content-main">
+          <ul class="object-tools">
+            <li>
+                <a href={{ previous_month }}>
+                    Previous month
+                </a>
+            </li>
+
+            <li>
+                <a href={{ next_month }}>
+                    Next month
+                </a>
+            </li>
+        </ul>
+
+     {{ calendar }}
+{% endblock %}
+
+
